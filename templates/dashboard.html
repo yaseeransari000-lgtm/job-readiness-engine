@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - SkillGap{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+
+    <div class="hero fade-in-up">
+        <div class="eyebrow">DASHBOARD // NEW SCAN</div>
+        <h1>Resume vs Job Description</h1>
+        <p>Apna match score nikalo aur exact pata karo kya seekhna hai.</p>
+    </div>
+
+    <div class="panel form-card fade-in-up delay-1">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <form method="POST" action="{{ url_for('check') }}" enctype="multipart/form-data" class="check-form">
+
+            <label class="field-label">Job Title (optional)</label>
+            <input type="text" name="job_title" placeholder="e.g. Frontend Developer at XYZ" class="text-input">
+
+            <div class="two-col">
+                <div class="col">
+                    <label class="field-label">Resume</label>
+                    <textarea name="resume_text" placeholder="Apna resume yahan paste karo... (ya PDF upload karo neeche)"></textarea>
+                    <input type="file" name="resume_file" accept=".pdf" class="file-input">
+                </div>
+                <div class="col">
+                    <label class="field-label">Job Description</label>
+                    <textarea name="job_description" placeholder="Job description yahan paste karo..." required></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary btn-large">
+                <span>Run Scan</span>
+                <span class="btn-arrow">→</span>
+            </button>
+        </form>
+    </div>
+
+    {% if history %}
+    <div class="panel history-card fade-in-up delay-2">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <div class="eyebrow">LOG // LAST 5 SCANS</div>
+        <h2>Recent Checks</h2>
+        <div class="history-list">
+            {% for item in history %}
+            <div class="history-item">
+                <div class="history-bar-bg">
+                    <div class="history-bar" style="width: {{ item['match_percent'] }}%"></div>
+                </div>
+                <div class="history-info">
+                    <span>{{ item['job_title'] or 'Untitled' }}</span>
+                    <strong>{{ item['match_percent'] }}%</strong>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
