@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Result - SkillGap{% endblock %}
+
+{% block content %}
+<div class="result-wrapper">
+
+    <a href="{{ url_for('dashboard') }}" class="back-link fade-in-down">← Back to Dashboard</a>
+
+    {% if warning %}
+    <div class="panel fade-in-up">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <p class="warning-text">⚠ {{ warning }}</p>
+    </div>
+    {% else %}
+
+    <div class="result-header fade-in-up">
+        <div class="eyebrow">SCAN RESULT // {{ job_title.upper() }}</div>
+        <h1>{{ job_title }}</h1>
+
+        <div class="gauge-wrap">
+            <div class="gauge-readout">
+                <span class="score-number" data-target="{{ match_percent }}">0</span>
+                <span class="score-percent">%</span>
+                <span class="score-label">Match Reading</span>
+            </div>
+            <div class="gauge-track">
+                <div class="gauge-fill" style="--score: {{ match_percent }}%"></div>
+            </div>
+            <div class="gauge-ticks">
+                <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+            </div>
+        </div>
+
+        <p class="score-summary">
+            {% if match_percent >= 75 %}
+                Bohot badhiya! Tu is job ke liye strong match hai.
+            {% elif match_percent >= 45 %}
+                Decent match hai, lekin kuch skills polish karne se chances badh jaayenge.
+            {% else %}
+                Abhi gap zyada hai — neeche di gayi skills pe focus karo.
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="skills-grid">
+        <div class="panel skills-card fade-in-up delay-1">
+            <span class="corner-bl"></span><span class="corner-br"></span>
+            <h2 class="matched-title">✓ Matched Skills ({{ matched_skills|length }})</h2>
+            <div class="tag-list">
+                {% for skill in matched_skills %}
+                <span class="tag tag-matched">{{ skill }}</span>
+                {% else %}
+                <p class="empty-text">Koi matched skill nahi mili.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="panel skills-card fade-in-up delay-2">
+            <span class="corner-bl"></span><span class="corner-br"></span>
+            <h2 class="missing-title">▲ Missing Skills ({{ missing_skills|length }})</h2>
+            <div class="missing-list">
+                {% for item in missing_skills %}
+                <a href="{{ item.link }}" target="_blank" class="missing-item">
+                    <span>{{ item.skill }}</span>
+                    <span class="learn-link">Learn this →</span>
+                </a>
+                {% else %}
+                <p class="empty-text">Wow, koi gap nahi!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Login - SkillGap{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card panel fade-in-up">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <div class="eyebrow">AUTH // LOGIN</div>
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Apne job-readiness journey mein wapas aao</p>
+
+        <form method="POST" action="{{ url_for('login') }}" class="auth-form">
+            <div class="input-group">
+                <input type="email" name="email" placeholder=" " required>
+                <label>Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder=" " required>
+                <label>Password</label>
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <p class="auth-switch">Naya account chahiye? <a href="{{ url_for('signup') }}">Sign up</a></p>
+    </div>
+</div>
+{% endblock %}

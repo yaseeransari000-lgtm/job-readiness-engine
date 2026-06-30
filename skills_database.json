@@ -1,0 +1,23 @@
+{
+    "skills": [
+        "python", "java", "javascript", "typescript", "c++", "c#", "go", "rust",
+        "html", "css", "react", "angular", "vue", "next.js", "node.js", "express",
+        "flask", "django", "fastapi", "spring boot", "rest api", "graphql",
+        "sql", "mysql", "postgresql", "mongodb", "redis", "sqlite", "firebase",
+        "git", "github", "docker", "kubernetes", "jenkins", "ci/cd", "linux",
+        "aws", "azure", "gcp", "cloud computing", "devops",
+        "machine learning", "deep learning", "nlp", "computer vision",
+        "tensorflow", "pytorch", "scikit-learn", "pandas", "numpy",
+        "data analysis", "data visualization", "tableau", "power bi", "excel",
+        "agile", "scrum", "jira", "project management",
+        "communication", "leadership", "teamwork", "problem solving",
+        "time management", "critical thinking", "adaptability",
+        "figma", "ui/ux design", "photoshop", "canva",
+        "android", "ios", "react native", "flutter", "swift", "kotlin",
+        "testing", "unit testing", "automation testing", "selenium",
+        "data structures", "algorithms", "system design", "oop",
+        "microservices", "api integration", "webpack", "tailwind css",
+        "bootstrap", "sass", "redux", "json", "xml", "etl",
+        "spark", "hadoop", "kafka", "airflow", "power automate"
+    ]
+}
